@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>O2C Credit Release Cockpit</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="app-header">
+
+        <div class="header-left">
+
+            <div class="sap-logo">
+                SAP
+            </div>
+
+            <div>
+                <h1>O2C Credit Release Cockpit</h1>
+
+                <p>
+                    Order to Cash • Credit Management
+                </p>
+            </div>
+
+        </div>
+
+        <div class="header-right">
+
+            <span class="user-name">
+                Credit Manager
+            </span>
+
+            <div class="user-avatar">
+                CM
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN APPLICATION
+    ====================================================== -->
+
+    <main class="container">
+
+
+        <!-- =================================================
+             PAGE INTRODUCTION
+        ================================================== -->
+
+        <section class="page-intro">
+
+            <div>
+
+                <p class="breadcrumb">
+                    SAP Practice / O2C / Credit Management
+                </p>
+
+                <h2>
+                    Credit Release Overview
+                </h2>
+
+                <p class="description">
+                    Review blocked sales orders and decide
+                    whether they should be released or held.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             KPI CARDS
+        ================================================== -->
+
+        <section class="kpi-grid">
+
+
+            <!-- Total Orders -->
+
+            <div class="kpi-card">
+
+                <div class="kpi-label">
+                    Total Orders
+                </div>
+
+                <div
+                    class="kpi-value"
+                    id="totalOrders">
+                    0
+                </div>
+
+                <div class="kpi-description">
+                    All sales orders
+                </div>
+
+            </div>
+
+
+            <!-- Blocked Orders -->
+
+            <div class="kpi-card warning">
+
+                <div class="kpi-label">
+                    Blocked Orders
+                </div>
+
+                <div
+                    class="kpi-value"
+                    id="blockedOrders">
+                    0
+                </div>
+
+                <div class="kpi-description">
+                    Awaiting credit review
+                </div>
+
+            </div>
+
+
+            <!-- Released Orders -->
+
+            <div class="kpi-card success">
+
+                <div class="kpi-label">
+                    Released Orders
+                </div>
+
+                <div
+                    class="kpi-value"
+                    id="releasedOrders">
+                    0
+                </div>
+
+                <div class="kpi-description">
+                    Ready for fulfilment
+                </div>
+
+            </div>
+
+
+            <!-- High Risk Orders -->
+
+            <div class="kpi-card danger">
+
+                <div class="kpi-label">
+                    High Risk Orders
+                </div>
+
+                <div
+                    class="kpi-value"
+                    id="highRiskOrders">
+                    0
+                </div>
+
+                <div class="kpi-description">
+                    Require attention
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             MAIN CONTENT
+        ================================================== -->
+
+        <section class="workspace">
+
+
+            <!-- =================================================
+                 SALES ORDER QUEUE
+            ================================================== -->
+
+            <div class="card order-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Sales Order Queue
+                        </h3>
+
+                        <p>
+                            Review customer orders requiring
+                            credit decisions.
+                        </p>
+
+                    </div>
+
+                    <span class="queue-label">
+                        O2C
+                    </span>
+
+                </div>
+
+
+                <!-- Search -->
+
+                <div class="search-container">
+
+                    <input
+                        type="text"
+                        id="orderSearch"
+                        placeholder="Search sales order or customer..."
+                    >
+
+                </div>
+
+
+                <!-- Table -->
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Sales Order
+                                </th>
+
+                                <th>
+                                    Customer
+                                </th>
+
+                                <th>
+                                    Material
+                                </th>
+
+                                <th>
+                                    Quantity
+                                </th>
+
+                                <th>
+                                    Order Value
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="orderTableBody">
+
+                            <!-- JavaScript inserts orders here -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 ORDER DETAILS
+            ================================================== -->
+
+            <div class="card details-card">
+
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Sales Order Details
+                        </h3>
+
+                        <p>
+                            Review credit information before
+                            making a decision.
+                        </p>
+
+                    </div>
+
+                    <span
+                        class="order-id"
+                        id="detailOrderId">
+                        Select Order
+                    </span>
+
+                </div>
+
+
+                <!-- Details -->
+
+                <div class="details-content">
+
+
+                    <!-- Customer -->
+
+                    <div class="detail-section">
+
+                        <h4>
+                            Customer Information
+                        </h4>
+
+                        <div class="detail-grid">
+
+                            <div class="detail-item">
+
+                                <span class="detail-label">
+                                    Customer
+                                </span>
+
+                                <span
+                                    class="detail-value"
+                                    id="detailCustomer">
+                                    —
+                                </span>
+
+                            </div>
+
+
+                            <div class="detail-item">
+
+                                <span class="detail-label">
+                                    Payment History
+                                </span>
+
+                                <span
+                                    class="detail-value"
+                                    id="detailPaymentHistory">
+                                    —
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Sales Order -->
+
+                    <div class="detail-section">
+
+                        <h4>
+                            Sales Order Information
+                        </h4>
+
+                        <div class="detail-grid">
+
+
+                            <div class="detail-item">
+
+                                <span class="detail-label">
+                                    Material
+                                </span>
+
+                                <span
+                                    class="detail-value"
+                                    id="detailMaterial">
+                                    —
+                                </span>
+
+                            </div>
+
+
+                            <div class="detail-item">
+
+                                <span class="detail-label">
+                                    Quantity
+                                </span>
+
+                                <span
+                                    class="detail-value"
+                                    id="detailQuantity">
+                                    —
+                                </span>
+
+                            </div>
+
+
+                            <div class="detail-item">
+
+                                <span class="detail-label">
+                                    Order Value
+                                </span>
+
+                                <span
+                                    class="detail-value highlight"
+                                    id="detailOrderValue">
+                                    —
+                                </span>
+
+                            </div>
+
+
+                            <div class="detail-item">
+
+                                <span class="detail-label">
+                                    Order Status
+                                </span>
+
+                                <span
+                                    class="detail-value"
+                                    id="detailStatus">
+                                    —
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Credit Information -->
+
+                    <div class="detail-section">
+
+                        <h4>
+                            Credit Information
+                        </h4>
+
+                        <div class="credit-grid">
+
+
+                            <div class="credit-box">
+
+                                <span>
+                                    Credit Limit
+                                </span>
+
+                                <strong
+                                    id="detailCreditLimit">
+                                    —
+                                </strong>
+
+                            </div>
+
+
+                            <div class="credit-box">
+
+                                <span>
+                                    Current Exposure
+                                </span>
+
+                                <strong
+                                    id="detailExposure">
+                                    —
+                                </strong>
+
+                            </div>
+
+
+                            <div class="credit-box">
+
+                                <span>
+                                    Overdue Amount
+                                </span>
+
+                                <strong
+                                    id="detailOverdue">
+                                    —
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Credit Decision -->
+
+                    <div class="decision-panel">
+
+                        <div>
+
+                            <span class="decision-label">
+                                Credit Decision
+                            </span>
+
+                            <h4
+                                id="creditDecision"
+                                class="decision">
+                                Select an order
+                            </h4>
+
+                            <p id="creditReason">
+                                Select a sales order from
+                                the queue to view the
+                                credit recommendation.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Action Buttons -->
+
+                    <div class="action-buttons">
+
+                        <button
+                            class="btn btn-secondary"
+                            onclick="holdOrder()">
+
+                            Hold Order
+
+                        </button>
+
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="releaseOrder()">
+
+                            Release Order
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             BUSINESS PROCESS INFORMATION
+        ================================================== -->
+
+        <section class="process-card">
+
+            <div class="process-header">
+
+                <div>
+
+                    <h3>
+                        O2C Process
+                    </h3>
+
+                    <p>
+                        Current practice focuses on the
+                        credit-check decision.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="process-flow">
+
+
+                <div class="process-step active">
+
+                    <span class="step-number">
+                        1
+                    </span>
+
+                    <span>
+                        Sales Order
+                    </span>
+
+                </div>
+
+
+                <span class="arrow">
+                    →
+                </span>
+
+
+                <div class="process-step active">
+
+                    <span class="step-number">
+                        2
+                    </span>
+
+                    <span>
+                        Credit Check
+                    </span>
+
+                </div>
+
+
+                <span class="arrow">
+                    →
+                </span>
+
+
+                <div class="process-step">
+
+                    <span class="step-number">
+                        3
+                    </span>
+
+                    <span>
+                        Delivery
+                    </span>
+
+                </div>
+
+
+                <span class="arrow">
+                    →
+                </span>
+
+
+                <div class="process-step">
+
+                    <span class="step-number">
+                        4
+                    </span>
+
+                    <span>
+                        Billing
+                    </span>
+
+                </div>
+
+
+                <span class="arrow">
+                    →
+                </span>
+
+
+                <div class="process-step">
+
+                    <span class="step-number">
+                        5
+                    </span>
+
+                    <span>
+                        Payment
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="app-footer">
+
+        <p>
+            O2C Credit Release Cockpit • SAP Business
+            Scenario Practice
+        </p>
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

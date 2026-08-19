@@ -1,0 +1,1092 @@
+/* =========================================================
+   O2C PRACTICE 1
+   Credit Release Cockpit
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f5f7fa;
+
+    color: #1f2937;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.app-header {
+
+    min-height: 72px;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #dfe3e8;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 32px;
+
+}
+
+
+.header-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+}
+
+
+.sap-logo {
+
+    width: 48px;
+
+    height: 48px;
+
+    background: #0874c9;
+
+    color: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: bold;
+
+    font-size: 18px;
+
+    border-radius: 6px;
+
+}
+
+
+.header-left h1 {
+
+    font-size: 20px;
+
+    font-weight: 600;
+
+    color: #1f2937;
+
+}
+
+
+.header-left p {
+
+    font-size: 13px;
+
+    color: #6b7280;
+
+}
+
+
+.header-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.user-name {
+
+    font-size: 14px;
+
+    color: #4b5563;
+
+}
+
+
+.user-avatar {
+
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 50%;
+
+    background: #e8f1f8;
+
+    color: #0874c9;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: bold;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.container {
+
+    max-width: 1500px;
+
+    margin: 0 auto;
+
+    padding: 32px;
+
+}
+
+
+/* =========================================================
+   PAGE INTRO
+   ========================================================= */
+
+.page-intro {
+
+    margin-bottom: 28px;
+
+}
+
+
+.breadcrumb {
+
+    font-size: 12px;
+
+    color: #6b7280;
+
+    margin-bottom: 8px;
+
+}
+
+
+.page-intro h2 {
+
+    font-size: 28px;
+
+    font-weight: 600;
+
+    margin-bottom: 6px;
+
+}
+
+
+.description {
+
+    color: #6b7280;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================================
+   KPI GRID
+   ========================================================= */
+
+.kpi-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-bottom: 24px;
+
+}
+
+
+.kpi-card {
+
+    background: #ffffff;
+
+    border: 1px solid #e1e5ea;
+
+    border-radius: 8px;
+
+    padding: 20px;
+
+    min-height: 135px;
+
+}
+
+
+.kpi-card.warning {
+
+    border-left: 4px solid #d99b00;
+
+}
+
+
+.kpi-card.success {
+
+    border-left: 4px solid #18864b;
+
+}
+
+
+.kpi-card.danger {
+
+    border-left: 4px solid #c0392b;
+
+}
+
+
+.kpi-label {
+
+    font-size: 13px;
+
+    color: #6b7280;
+
+    margin-bottom: 10px;
+
+}
+
+
+.kpi-value {
+
+    font-size: 32px;
+
+    font-weight: 600;
+
+    color: #1f2937;
+
+}
+
+
+.kpi-description {
+
+    margin-top: 6px;
+
+    font-size: 12px;
+
+    color: #9ca3af;
+
+}
+
+
+/* =========================================================
+   WORKSPACE
+   ========================================================= */
+
+.workspace {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.4fr)
+        minmax(350px, 0.9fr);
+
+    gap: 24px;
+
+    align-items: start;
+
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.card {
+
+    background: #ffffff;
+
+    border: 1px solid #e1e5ea;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+}
+
+
+.card-header {
+
+    padding: 20px;
+
+    border-bottom: 1px solid #e8ebef;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+.card-header h3 {
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    margin-bottom: 4px;
+
+}
+
+
+.card-header p {
+
+    font-size: 13px;
+
+    color: #6b7280;
+
+}
+
+
+.queue-label {
+
+    background: #e8f1f8;
+
+    color: #0874c9;
+
+    padding: 5px 10px;
+
+    border-radius: 4px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+
+.order-id {
+
+    font-size: 13px;
+
+    background: #f1f3f5;
+
+    padding: 6px 10px;
+
+    border-radius: 4px;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.search-container {
+
+    padding: 16px 20px;
+
+    border-bottom: 1px solid #e8ebef;
+
+}
+
+
+.search-container input {
+
+    width: 100%;
+
+    padding: 10px 12px;
+
+    border: 1px solid #ccd2d8;
+
+    border-radius: 5px;
+
+    font-size: 13px;
+
+    outline: none;
+
+}
+
+
+.search-container input:focus {
+
+    border-color: #0874c9;
+
+    box-shadow:
+        0 0 0 2px rgba(8, 116, 201, 0.1);
+
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.table-container {
+
+    overflow-x: auto;
+
+}
+
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+}
+
+
+thead {
+
+    background: #f7f8fa;
+
+}
+
+
+th {
+
+    text-align: left;
+
+    padding: 12px 14px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    color: #5f6873;
+
+    border-bottom: 1px solid #e1e5ea;
+
+    white-space: nowrap;
+
+}
+
+
+td {
+
+    padding: 14px;
+
+    font-size: 13px;
+
+    border-bottom: 1px solid #edf0f2;
+
+    white-space: nowrap;
+
+}
+
+
+tbody tr {
+
+    transition: background 0.15s ease;
+
+}
+
+
+tbody tr:hover {
+
+    background: #f5f9fc;
+
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.status {
+
+    display: inline-block;
+
+    padding: 4px 8px;
+
+    border-radius: 4px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+}
+
+
+.status.blocked {
+
+    background: #fdecec;
+
+    color: #b42318;
+
+}
+
+
+.status.released {
+
+    background: #e8f6ed;
+
+    color: #137333;
+
+}
+
+
+/* =========================================================
+   TABLE BUTTON
+   ========================================================= */
+
+td button {
+
+    border: none;
+
+    background: transparent;
+
+    color: #0874c9;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+td button:hover {
+
+    text-decoration: underline;
+
+}
+
+
+/* =========================================================
+   DETAILS
+   ========================================================= */
+
+.details-content {
+
+    padding: 20px;
+
+}
+
+
+.detail-section {
+
+    padding-bottom: 20px;
+
+    margin-bottom: 20px;
+
+    border-bottom: 1px solid #edf0f2;
+
+}
+
+
+.detail-section h4 {
+
+    font-size: 13px;
+
+    color: #4b5563;
+
+    margin-bottom: 14px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.4px;
+
+}
+
+
+.detail-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+
+}
+
+
+.detail-item {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+}
+
+
+.detail-label {
+
+    font-size: 11px;
+
+    color: #8a929b;
+
+}
+
+
+.detail-value {
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #263238;
+
+}
+
+
+.detail-value.highlight {
+
+    color: #0874c9;
+
+}
+
+
+/* =========================================================
+   CREDIT GRID
+   ========================================================= */
+
+.credit-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 10px;
+
+}
+
+
+.credit-box {
+
+    background: #f7f8fa;
+
+    border: 1px solid #e5e8eb;
+
+    border-radius: 6px;
+
+    padding: 14px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+}
+
+
+.credit-box span {
+
+    font-size: 11px;
+
+    color: #7a828c;
+
+}
+
+
+.credit-box strong {
+
+    font-size: 15px;
+
+    color: #263238;
+
+}
+
+
+/* =========================================================
+   DECISION PANEL
+   ========================================================= */
+
+.decision-panel {
+
+    background: #f7f9fb;
+
+    border: 1px solid #e0e6eb;
+
+    border-radius: 6px;
+
+    padding: 16px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.decision-label {
+
+    display: block;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.4px;
+
+    color: #7a828c;
+
+    margin-bottom: 5px;
+
+}
+
+
+.decision {
+
+    font-size: 16px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.decision.success {
+
+    color: #137333;
+
+}
+
+
+.decision.danger {
+
+    color: #b42318;
+
+}
+
+
+.decision-panel p {
+
+    font-size: 12px;
+
+    color: #6b7280;
+
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+
+.action-buttons {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+}
+
+
+.btn {
+
+    padding: 10px 18px;
+
+    border-radius: 5px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    border: 1px solid transparent;
+
+    transition: 0.15s ease;
+
+}
+
+
+.btn-secondary {
+
+    background: #ffffff;
+
+    border-color: #c8cfd6;
+
+    color: #374151;
+
+}
+
+
+.btn-secondary:hover {
+
+    background: #f3f4f6;
+
+}
+
+
+.btn-primary {
+
+    background: #0874c9;
+
+    color: #ffffff;
+
+}
+
+
+.btn-primary:hover {
+
+    background: #075f9f;
+
+}
+
+
+/* =========================================================
+   PROCESS FLOW
+   ========================================================= */
+
+.process-card {
+
+    margin-top: 24px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1e5ea;
+
+    border-radius: 8px;
+
+    padding: 20px;
+
+}
+
+
+.process-header {
+
+    margin-bottom: 18px;
+
+}
+
+
+.process-header h3 {
+
+    font-size: 17px;
+
+    margin-bottom: 4px;
+
+}
+
+
+.process-header p {
+
+    font-size: 13px;
+
+    color: #6b7280;
+
+}
+
+
+.process-flow {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    overflow-x: auto;
+
+}
+
+
+.process-step {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 9px 12px;
+
+    background: #f4f5f7;
+
+    border-radius: 5px;
+
+    color: #69727c;
+
+    font-size: 12px;
+
+    white-space: nowrap;
+
+}
+
+
+.process-step.active {
+
+    background: #e8f1f8;
+
+    color: #0874c9;
+
+    font-weight: 600;
+
+}
+
+
+.step-number {
+
+    width: 22px;
+
+    height: 22px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 11px;
+
+}
+
+
+.arrow {
+
+    color: #9ca3af;
+
+    font-size: 18px;
+
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.app-footer {
+
+    border-top: 1px solid #e1e5ea;
+
+    background: #ffffff;
+
+    margin-top: 40px;
+
+    padding: 18px 32px;
+
+    text-align: center;
+
+}
+
+
+.app-footer p {
+
+    font-size: 12px;
+
+    color: #8a929b;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .workspace {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .kpi-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+    .app-header {
+
+        padding: 0 18px;
+
+    }
+
+    .container {
+
+        padding: 20px;
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .kpi-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .header-left h1 {
+
+        font-size: 16px;
+
+    }
+
+    .header-left p {
+
+        display: none;
+
+    }
+
+    .user-name {
+
+        display: none;
+
+    }
+
+    .detail-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .credit-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .action-buttons {
+
+        flex-direction: column;
+
+    }
+
+    .btn {
+
+        width: 100%;
+
+    }
+
+}
